@@ -1,17 +1,9 @@
 #!/usr/bin/env bash
 
-token=$(curl https://discovery.etcd.io/new?size=3)
+version="v1.2.1"
 
-echo $token
-
-find='etcd_token'
-
-IFS='%'
-
-while read a ; do echo ${a//$find/$token} ; done < ./run/user-data.template > ./run_config/user-data
-
-cp ./run/config.rb.template ./run_config/config.rb
-
-cp ./run/Vagrantfile ./run_config/Vagrantfile
-
-unset IFS
+if ! [ -e "$PWD/rkt/rkt" ]; then
+  wget "https://github.com/coreos/rkt/releases/download/$version/rkt-$version.tar.gz" -O rkt.tar.gz
+  tar -xvzf rkt.tar.gz -C "$PWD/rkt" --strip-components=1
+  rm rkt.tar.gz
+fi

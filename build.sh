@@ -6,10 +6,11 @@ if [ "$EUID" -ne 0 ]; then
   exit 1
 fi
 
+version="v0.2.2"
 
 # installs acbuild
 if ! [ -e "$PWD/build_modules/acbuild" ]; then
-  wget https://github.com/appc/acbuild/releases/download/v0.2.2/acbuild.tar.gz && tar -xvzf acbuild.tar.gz -C "$PWD/build_modules" && rm acbuild.tar.gz
+  wget https://github.com/appc/acbuild/releases/download/$version/acbuild.tar.gz && tar -xvzf acbuild.tar.gz -C "$PWD/build_modules" && rm acbuild.tar.gz
 fi
 
 
