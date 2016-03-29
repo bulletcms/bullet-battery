@@ -6,4 +6,3 @@
 
 ## run
 - Run `./run.sh`
-- Run `./rkt/rkt run bullet-battery.aci`

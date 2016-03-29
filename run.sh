@@ -7,3 +7,8 @@ if ! [ -e "$PWD/rkt/rkt" ]; then
   tar -xvzf rkt.tar.gz -C "$PWD/rkt" --strip-components=1
   rm rkt.tar.gz
 fi
+
+if [ -e "$PWD/bullet-batery.aci" ]; then
+  ./build.sh
+fi
+./rkt/rkt --insecure-options=image run ./bullet-battery.aci --interactive
