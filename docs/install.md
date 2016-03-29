@@ -1,5 +1,6 @@
 # Installation Guide
 
 Install Go
-Install Rkt
+Install Virtualbox
+Install Vagrant
 Run build.sh

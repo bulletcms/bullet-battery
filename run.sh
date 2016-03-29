@@ -4,8 +4,14 @@ token=$(curl https://discovery.etcd.io/new?size=3)
 
 echo $token
 
-find='$token'
+find='etcd_token'
 
-cat ./run/user-data.template | sed -e s/$find/$token/ > test
+IFS='%'
 
-# sed -e s/\$token/$token/ ./run/user-data.template  > test
+while read a ; do echo ${a//$find/$token} ; done < ./run/user-data.template > ./run_config/user-data
+
+cp ./run/config.rb.template ./run_config/config.rb
+
+cp ./run/Vagrantfile ./run_config/Vagrantfile
+
+unset IFS
