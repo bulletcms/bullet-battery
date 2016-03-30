@@ -11,4 +11,4 @@ fi
 if [ -e "$PWD/bullet-batery.aci" ]; then
   ./build.sh
 fi
-./rkt/rkt --insecure-options=image run ./bullet-battery.aci --interactive
+./rkt/rkt --insecure-options=image run ./bullet-battery.aci --volume html,kind=host,source=/home/kevin/projects/webdev/bullet-tracer/dist,readOnly=true --net=host
